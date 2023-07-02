@@ -55,10 +55,9 @@ Please ensure that you have the necessary dependencies installed before attempti
 
 ## Screenshots
 
-![Screenshot 1](https://drive.google.com/file/d/1MNNh93Px1V5eEF_d08B0Ey8LTnxTuuGP/view?usp=drive_link)
+![Screenshot 1](https://github.com/Kalashyan-1/Linux-Emulator/assets/114615404/8fc69730-e66b-432c-9270-e66a0205bd1e)
 
-
-![Screenshot 2](https://drive.google.com/file/d/1ZP8L6WWuV9OxJwbXrxBx3omaU6K655O0/view?usp=drive_link)
+![Screenshot 2](https://github.com/Kalashyan-1/Linux-Emulator/assets/114615404/6fcebdd6-6092-43e8-bb90-c2f29f8e3130)
 
 
 ## Contributing
