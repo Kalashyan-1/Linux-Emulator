@@ -17,7 +17,6 @@ protected:
 public:
    Command(const std::string& n) :name {n} {}
    Command() = default;
-   // virtual ~Command() = 0;
    virtual void execute(State&, Result&, int) = 0;
    virtual void initQuests() = 0;
 };

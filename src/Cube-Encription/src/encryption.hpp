@@ -32,6 +32,4 @@ public:
     std::string decript();
 };
 
-#include "encryption.cpp"
-
 #endif  //ENC_

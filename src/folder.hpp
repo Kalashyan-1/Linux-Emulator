@@ -17,13 +17,9 @@ public:
     void setParent(Folder*);
     Folder* find(const std::string& str);
     std::vector<FileSystem*> getChildren() const;
-private:
-    // std::map<std::string, std::pair<std::string, std::vector<bool>>> permitions;
-    
+private:    
     std::vector<FileSystem*> children;
     Folder* parent;
 };
-
-#include "folder.cpp"
 
 #endif

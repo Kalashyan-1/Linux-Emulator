@@ -13,6 +13,4 @@ public:
     void initQuests() override;
 };
  
-#include "rm.cpp"
-
-#endif
+#endif  //RM_

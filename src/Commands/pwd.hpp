@@ -10,6 +10,5 @@ public:
    void initQuests() override;
 };
 
-#include "pwd.cpp"
 
 #endif 

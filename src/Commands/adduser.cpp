@@ -8,9 +8,7 @@ Adduser::Adduser(const std::string& n) {
 void Adduser::execute(State& st, Result& result, int i) {
     std::string tmp;
     std::string tmp2 = "";
-    std::string password;
     bool flag = false;
-    // for (auto a : quests) {
         auto a = quests[i];
         Folder* f = st.getCurrentState();
         std::string print;
@@ -22,26 +20,15 @@ void Adduser::execute(State& st, Result& result, int i) {
         } else {
             print = st.getCurrentState()->getPath() + '/' + st.getCurrentState()->getName();
         }
-        std::cout << "\033[1;35m" <<  st.getUser().back()->getName() + "@Emuliator: " + print + " $ " <<"\033[0m";
+        std::cout << "\033[1;35m" <<  st.getUser().back()->getName() + "@Emulator: " + print + " $ " <<"\033[0m";
         std::getline(std::cin, tmp);
         std::stringstream ss(tmp);
         while (ss >> tmp) {
             tmp2 += tmp + " ";
         }
         
-        std::cout << "tmp2: " << tmp2 << std::endl;
         for (auto b : a.first->getQuest().second) {
             if (tmp2 == b) {
-                while (true) {
-                    std::cout << "New password: ";
-                    std::getline(std::cin, password);
-                    std::cout << "Retype new password: ";
-                    std::getline(std::cin, tmp);
-                    if (password == tmp) {
-                        break;
-                    }
-                }
-                en.setText(password);
                 std::cout << "\033[1;32m Correct answer! \033[0m" << std::endl;
                 a.second(st);
                 flag = true;
@@ -51,7 +38,6 @@ void Adduser::execute(State& st, Result& result, int i) {
         if (!flag) {
             std::cout << "\033[1;31m Wrong answer! \033[0m" << std::endl;
             std::cout << "At this point, the program automatically performed the necessary action." << std::endl;
-            en.setText("Linux-Emulator");
             a.second(st);
             result.add(a.first);
             flag = false;
@@ -63,7 +49,6 @@ Folder* Adduser::find(State& state, const std::string& str) {
     std::stringstream ss(str);
     bool flag = true;
     Folder* fold = state.getRoot();
-    std::cout << "str: " << str << std::endl;
     while (std::getline(ss, tempStr, '/') && flag) {
         auto children = fold->getChildren();
         for (auto a : children) {
@@ -87,6 +72,19 @@ Folder* Adduser::find(State& state, const std::string& str) {
 void Adduser::initQuests() {
     Qusetion* q = new Qusetion("Create a new user named `my_user`, such that a directory is created in home directory and allow.\nDo not use any option.", {"adduser my_user "});
     quests.push_back({q, [&](State& st) {
+        std::string password;
+        std::string tmp;
+
+        while (true) {
+            std::cout << "New password: ";
+            std::getline(std::cin, password);
+            std::cout << "Retype new password: ";
+            std::getline(std::cin, tmp);
+            if (password == tmp) {
+                break;
+            }
+        }
+        en.setText(password);
         Folder* f;
         
         User* u = new User("my_user");
@@ -119,7 +117,6 @@ void Adduser::initQuests() {
         f = find(st, "home");
         Folder* newf = new Folder(u->getName(), f->getPath() + f->getName());
         newf->setParent(f);
-        // std::cout << st;
         f->add(newf);
     }});
 }

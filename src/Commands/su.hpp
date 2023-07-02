@@ -3,6 +3,8 @@
 
 #include "../command.hpp"
 #include "../file.hpp"
+#include "../Cube-Encription/src/encryption.hpp"
+
 class Su : public Command {
 public:
    Su(const std::string& n);
@@ -10,7 +12,5 @@ public:
    Folder* find(State& state, const std::string& str);
    void initQuests() override;
 };
-
-#include "su.cpp"
 
 #endif //SU_

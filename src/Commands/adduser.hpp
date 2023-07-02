@@ -17,6 +17,4 @@ private:
    Encryption en;
 }; 
 
-#include "adduser.cpp"
-
 #endif

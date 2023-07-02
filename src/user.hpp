@@ -15,6 +15,5 @@ private:
     int groupID;
 };
 
-int User::id = 1000;
 
 #endif

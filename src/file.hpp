@@ -20,5 +20,4 @@ private:
     std::string content;
 };
 
-#include "file.cpp"
 #endif  //FILE_

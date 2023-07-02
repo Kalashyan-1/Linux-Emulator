@@ -50,6 +50,7 @@ void Encryption::rotateDown(std::string& str) {
  
 std::string Encryption::encript() {
     std::ofstream file("key.txt");
+    if (!file.is_open()) {std::cout << "Can not open.";}
     file << "key:" << std::endl;
     int size = cube.size() / 8;
     int tmp = cube.size() - (size * 8);
@@ -90,6 +91,7 @@ std::string Encryption::encript() {
         res += s;
     }
     file << key;
+    file.close();
     cube = res;
     return res;
 }
@@ -100,6 +102,7 @@ std::string Encryption::decript() {
     std::string key;
     std::getline(file, key);
     std::getline(file, key);
+    std::cout << "key: " << key << std::endl;
     std::stringstream s(key);
     std::string tmp1;
     std::string tmp2;
@@ -128,6 +131,7 @@ std::string Encryption::decript() {
         if (*(res.begin() + i) != '?') {break;}
         res.erase(res.begin() + i);
     }
+    cube = res;
     return res;
 } 
 

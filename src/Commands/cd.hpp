@@ -11,6 +11,5 @@ public:
     void initQuests() override;
 };
 
-#include "cd.cpp"
 
 #endif  //CD_

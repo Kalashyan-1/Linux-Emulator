@@ -14,6 +14,5 @@ private:
     std::vector<std::vector<std::pair<std::string, int>>> scen;
 };
 
-#include "scenario.cpp"
 
-#endif
+#endif   // SCEN_

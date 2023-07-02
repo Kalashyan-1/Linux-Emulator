@@ -17,6 +17,5 @@ public:
 
 };
 
-#include "deluser.cpp"
 
 #endif

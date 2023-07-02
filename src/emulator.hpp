@@ -31,6 +31,5 @@ public:
     // ~Emuliator();
 };
 
-#include "emuliator.cpp"
 
 #endif  //EMUL_

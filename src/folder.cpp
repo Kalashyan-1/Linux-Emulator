@@ -23,7 +23,6 @@ void Folder::setParent(Folder* parent) {
     this->parent = parent;
 }
 void Folder::remove(FileSystem* component) {
-    // children.erase(std::remove(children.begin(), children.end(), component), children.end());
     auto it = std::find(children.begin(), children.end(), component);
     if (it != children.end()) {
         children.erase(it);

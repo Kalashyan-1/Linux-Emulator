@@ -14,6 +14,4 @@ private:
     std::vector<Qusetion*> wrongAnswers;
 };
 
-#include "result.cpp"
-
 #endif  //RES_

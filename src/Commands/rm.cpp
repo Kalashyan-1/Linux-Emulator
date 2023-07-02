@@ -8,7 +8,6 @@ void Rm::execute(State& st, Result& result, int i) {
     std::string tmp;
     std::string tmp2 = "";
     bool flag = false;
-    // for (auto a : quests) {
         auto a = quests[i];
         Folder* f = st.getCurrentState();
         std::string print;
@@ -20,7 +19,7 @@ void Rm::execute(State& st, Result& result, int i) {
         } else {
             print = st.getCurrentState()->getPath() + '/' + st.getCurrentState()->getName();
         }
-        std::cout << "\033[1;35m" <<  st.getUser().back()->getName() + "@Emuliator: " + print + " $ " <<"\033[0m";
+        std::cout << "\033[1;35m" <<  st.getUser().back()->getName() + "@Emulator: " + print + " $ " <<"\033[0m";
         std::getline(std::cin, tmp);
         std::stringstream ss(tmp); 
         while (ss >> tmp) {
@@ -51,7 +50,6 @@ Folder* Rm::find(State& state, const std::string& str) {
     std::stringstream ss(str);
     bool flag = true;
     Folder* fold = state.getRoot();
-    std::cout << "str: " << str << std::endl;
     while (std::getline(ss, tempStr, '/') && flag) {
         auto children = fold->getChildren();
         for (auto a : children) {

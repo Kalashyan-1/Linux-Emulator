@@ -10,6 +10,4 @@ public:
    void initQuests() override;
 };
 
-#include "mkdir.cpp"
-
 #endif

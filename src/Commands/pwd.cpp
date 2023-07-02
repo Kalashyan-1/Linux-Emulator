@@ -19,14 +19,13 @@ void Pwd::execute(State& st, Result& result, int i) {
         } else {
             print = st.getCurrentState()->getPath() + '/' + st.getCurrentState()->getName();
         }
-        std::cout << "\033[1;35m" <<  st.getUser().back()->getName() + "@Emuliator: " + print + " $ " <<"\033[0m";
+        std::cout << "\033[1;35m" <<  st.getUser().back()->getName() + "@Emulator: " + print + " $ " <<"\033[0m";
         std::getline(std::cin, tmp);
         std::stringstream ss(tmp);
         while (ss >> tmp) {
             tmp2 += tmp + " ";
         }
         
-        std::cout << "tmp2: " << tmp2 << std::endl;
         for (auto b : a.first->getQuest().second) {
             if (tmp2 == b) {
                 std::cout << "\033[1;32m Correct answer! \033[0m" << std::endl;

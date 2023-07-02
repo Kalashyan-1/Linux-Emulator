@@ -1,10 +1,10 @@
-#include "emuliator.hpp"
+#include "emulator.hpp"
+int User::id = 1000;
 
 void Emuliator::initEmul() {
     filesys = new Folder("/", "/");
     filesys->setParent(nullptr);
     users.push_back(new User("root"));
-    // state.setUser(users);
     Folder* tmp = new Folder("etc", "/");
     tmp->setParent(filesys);
     filesys->add(tmp);
@@ -41,6 +41,8 @@ void Emuliator::intiMap() {
     commands["rm"] = new Rm("rm");
     commands["adduser"] = new Adduser("adduser");
     commands["deluser"] = new Deluser("deluser");
+    commands["su"] = new Su("su");
+    commands["pwd"] = new Pwd("pwd");
 }
 
 std::string parse(const std::string& com) {
@@ -66,28 +68,20 @@ void Emuliator::run() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void Emuliator::info() {
-    std::cout << "\033[1;31m";
+    std::cout << "\n\n\n";
+    std::cout << "\033[1;33m";
     std::cout << "                                          ██████╗  ██████╗ ███╗   ███╗██╗██╗  ██╗\n";
     std::cout << "                                          ██╔══██╗██╔═══██╗████╗ ████║██║╚██╗██╔╝\n";
     std::cout << "                                          ██████╔╝██║   ██║██╔████╔██║██║ ╚███╔╝ \n";
     std::cout << "                                          ██╔═══╝ ██║   ██║██║╚██╔╝██║██║ ██╔██╗ \n";
     std::cout << "                                          ██║     ╚██████╔╝██║ ╚═╝ ██║██║██╔╝ ██╗\n";
-    std::cout << "                                          ╚═╝      ╚═════╝ ╚═╝     ╚═╝╚═╝╚═╝  ╚═╝\n";
+    std::cout << "                                          ╚═╝      ╚═════╝ ╚═╝     ╚═╝╚═╝╚═╝  ╚═╝\n\n\n";
+
+
+    std::cout << " POMIX is an educational program powered by Khachik Kalashyan that emulates Linux commands and quizzes users on their knowledge of these commands.\n " << 
+    "It is providing a hands-on learning experience for users to practice using various Linux commands.\n\n\nLet's Start\n" << std::endl;
+
     std::cout << "\033[0m"; // Reset color
+
 }

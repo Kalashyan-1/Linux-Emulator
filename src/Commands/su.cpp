@@ -70,7 +70,7 @@ Folder* Su::find(State& state, const std::string& str) {
     return fold;  
 }
 void Su::initQuests() {
-    Qusetion* q = new Qusetion("Change the user to `my_user`.", {"su my_user "});
+    Qusetion* q = new Qusetion("Change the user to `my_user`.", {"sudo su my_user ", "su my_user "});
     quests.push_back({q, [&](State& st) {
         auto& users = st.getUser();
         for (auto& a : users) {
@@ -81,8 +81,44 @@ void Su::initQuests() {
         }
     }});
 
-    q = new Qusetion("Change the user to `root`.", {"su my_user "});
+    q = new Qusetion("Change the user to `root`.", {"su root "});
     quests.push_back({q, [&](State& st) {
+        Folder* f = find(st,"etc");
+        std::string tmp;
+        for (auto ch : f->getChildren()) {
+            if (ch->getName() == "shadow" && dynamic_cast<File*>(ch)) {
+                File* file = dynamic_cast<File*>(ch);
+                tmp = file->getContent();
+                break;
+            }
+        }
+        std::stringstream ss(tmp);
+        std::getline(ss, tmp, ':');
+        std::getline(ss, tmp, ':');
+
+
+        std::string password;
+        Encryption en(tmp);
+        en.decript();
         
+
+        std::cout << "Write password for `my_user`" << std::endl;  
+        int c = 3;
+        while (c--) {
+            std::cout << "New password: ";
+            std::getline(std::cin, password);
+            if (password == en.getCube()) {
+                break;
+            }
+        }
+
+        auto& users = st.getUser();
+        for (auto& a : users) {
+            if (a->getName() == "my_user") {
+                std::swap(a, users[users.size() - 1]);
+                break;
+            }
+        }
+
     }});
 }
